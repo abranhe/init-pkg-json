@@ -1,5 +1,5 @@
-<p align="center">
-	<a href="https://www.npmjs.com/package/init-pkg-json"><img src="https://cdn.abraham.gq/projects/init-pkg-json/logo.png" width="50%"></a>
+<p align="center" id="top">
+	<a href="https://www.npmjs.com/package/init-pkg-json"><img src="https://cdn.abraham.gq/projects/init-pkg-json/logo.png" width="300"></a>
 	<br>
 	<br>
 	<br>
@@ -15,17 +15,29 @@
 	<a href="https://www.patreon.com/abranhe"><img src="https://cdn.abraham.gq/badges/patreon.svg" /></a>
 </p>
 
+# See
+
+- [Overview](#Overview)
+- [Install](#install)
+- [Usage](#usage)
+- [API](#api)
+- [Related](#related)
+- [Team](#team)
+- [License](#license)
+
 # Overview
 
 **Package.json** is the the [*npm*](https://npmjs.com) or [*yarn*](https://yarnpkg.com) root of the project. This file holds various metadata relevant to the project. This file is used to give information that allows it to identify the project as well as handle the project's dependencies
 
-[`init-pkg-json`](https://github.com/abranhe/init-pkg-json) allows you create and easily customize package.json files. We are based on the [yarnpkg](https://yarnpkg.com/lang/en/docs/package-json/) documentation for the package.json.
+[`init-pkg-json`](https://github.com/abranhe/init-pkg-json) allows you create and easily customize package.json files. We are based on the [yarn](https://yarnpkg.com/lang/en/docs/package-json/) and [npm](https://docs.npmjs.com/files/package.json) documentation for the package.json configuration.
 
 # Install
 
 ```
 $ npm install init-pkg-json
 ```
+
+# Usage
 
 ## Essentials
 
@@ -101,7 +113,7 @@ All packages should specify a license so that users know how they are permitted 
 ```js
 const pkg = require('init-pkg-json');
 
-pkg.keywords('MIT');
+pkg.license('MIT');
 ```
 
 ### Result in JSON
@@ -189,30 +201,45 @@ pkg.repository('github:user/repo');
 }
 ```
 
-
-
-
-
-
-
-
-
-
-
 ## Maintainers
 
 The maintainers of your project.
 
 ### `author`
 
+Package author information. An author is one person.
+
+```js
+const pkg = require('init-pkg-json');
+
+pkg.author('Your Name <you@example.com> (http://your-website.com)');
+```
+
+### Result in JSON
+
 ```json
 {
-  "author": { "name": "Your Name", "email": "you@example.com", "url": "http://your-website.com" },
-  "author": "Your Name <you@example.com> (http://your-website.com)"
+	"author": "Your Name <you@example.com> (http://your-website.com)"
 }
 ```
 
-Package author information. An author is one person.
+```js
+const pkg = require('init-pkg-json');
+
+pkg.author('Your Name', 'you@example.com', 'http://your-website.com');
+```
+
+### Result in JSON
+
+```json
+{
+  "author": {
+		"name": "Your Name",
+		"email": "you@example.com",
+		"url": "http://your-website.com"
+	}
+}
+```
 
 ### `contributors`
 
@@ -461,7 +488,125 @@ These configuration values will be used when publishing your package. You can ta
 
 # API
 
-> TODO
+**indentation(size)**
+
+> Set the indentation size in package.json file
+
+**init(name, version)**
+
+> Init package.json with name and version
+
+**description(description)**
+
+> Add description to package.json
+
+**keywords([keywords])**
+
+> Add keywords to package.json
+
+**license(license)**
+
+> Add license to package.json
+
+**homepage(link)**
+
+> Add homepage to package.json
+
+**bugs(link)**
+
+> Add bugs link to package.json
+
+**repository(link)**
+
+> Add repository to package.json
+
+**repository(link, type)**
+
+> Add repository and type to package.json
+
+**autor(author)**
+
+> Add author to package.json
+
+**autor(name, email, website)**
+
+> Add author name, email and website to package.json
+
+**contributors([contributors])**
+
+> Add contributors to package.json
+
+**files([files])**
+
+> Add files to package.json
+
+**main(main)**
+
+> Add main to package.json
+
+**man([manuals])**
+
+> Add manuals to package.json
+
+**dir({directories})**
+
+> Add directories to package.json
+
+**scripts({scripts})**
+
+> Add scripts to package.json
+
+**config({config})**
+
+> Add config to package.json
+
+**dependencies({dependencies})**
+
+> Add dependencies to package.json
+
+**devDependencies({devDependencies})**
+
+> Add devDependencies to package.json
+
+**peerDependencies({peerDependencies})**
+
+> Add peerDependencies to package.json
+
+**optionalDependencies({optionalDependencies})**
+
+> Add optionalDependencies to package.json
+
+**bundledDependencies({bundledDependencies})**
+
+> Add bundledDependencies to package.json
+
+**flat(stringBoolean)**
+
+> Add flat to package.json
+
+**resolutions({resolutions})**
+
+> Add resolutions to package.json
+
+**engines({engines})**
+
+> Add engines to package.json
+
+**os([os])**
+
+> Add operating systems to package.json
+
+**cpu([cpu])**
+
+> Add cpu to package.json
+
+**private(stringBoolean)**
+
+> Add privacy to package.json
+
+**publishConfig({config})**
+
+> Add publish config to package.json
 
 # Related
 
@@ -476,3 +621,7 @@ These configuration values will be used when publishing your package. You can ta
 # License
 
 [MIT](https://github.com/abranhe/init-pkg-json/blob/master/LICENSE) License © [Carlos Abraham](https://github.com/abranhe/)
+
+<p align="center">
+	<a href="#top"><img src="https://cdn.abraham.gq/projects/init-pkg-json/logo.png" width="30"></a>
+</p>

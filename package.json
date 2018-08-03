@@ -1,29 +1,40 @@
 {
   "name": "init-pkg-json",
-  "version": "0.1.0",
-  "description": "Find shortest NPM packages names",
+  "version": "1.0.0",
+  "description": "📦 Complex generator of Package.json",
   "main": "index.js",
   "scripts": {
-    "test": "ava"
+    "test": "echo its-good"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/abranhe/npm-short-names.git"
+    "url": "https://github.com/abranhe/init-pkg-json.git"
   },
   "keywords": [
-    "short-names",
-    "npm-pkg",
-    "npm-pkg-name",
-    "cool-name"
+    "package",
+    "pkg",
+    "package-json",
+    "json",
+    "pkg-json",
+    "generator",
+    "builder",
+    "files",
+    "module",
+    "yarn",
+    "npm"
   ],
-  "author": "Carlos Abraham",
+  "files": [
+    "index.js",
+    "lib/"
+  ],
+  "author": {
+    "name": "Carlos Abraham",
+    "email": "abraham@abranhe.com",
+    "web": "abranhe.com"
+  },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/abranhe/npm-short-names/issues"
+    "url": "https://github.com/abranhe/init-pkg-json/issues"
   },
-  "homepage": "https://github.com/abranhe/npm-short-names#readme",
-  "dependencies": {
-    "all-words": "^1.0.1",
-    "npm-name": "^4.0.0"
-  }
+  "homepage": "https://github.com/abranhe/init-pkg-json#readme"
 }
