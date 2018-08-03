@@ -1,0 +1,29 @@
+{
+  "name": "init-pkg-json",
+  "version": "0.1.0",
+  "description": "Find shortest NPM packages names",
+  "main": "index.js",
+  "scripts": {
+    "test": "ava"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abranhe/npm-short-names.git"
+  },
+  "keywords": [
+    "short-names",
+    "npm-pkg",
+    "npm-pkg-name",
+    "cool-name"
+  ],
+  "author": "Carlos Abraham",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/abranhe/npm-short-names/issues"
+  },
+  "homepage": "https://github.com/abranhe/npm-short-names#readme",
+  "dependencies": {
+    "all-words": "^1.0.1",
+    "npm-name": "^4.0.0"
+  }
+}
