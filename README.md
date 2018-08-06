@@ -10,6 +10,7 @@
 <p align="center">
 	<a href="https://travis-ci.org/abranhe/init-pkg-json"><img src="https://img.shields.io/travis/abranhe/init-pkg-json.svg?logo=travis" /></a>
 	<a href="https://github.com/abranhe/init-pkg-json/blob/master/LICENSE"><img src="https://img.shields.io/github/license/abranhe/init-pkg-json.svg" /></a>
+	<a href="https://travis-ci.org/abranhe/init-pkg-json"><img src="https://img.shields.io/npm/v/init-pkg-json.svg" /></a>
 	<a href="https://github.com/abranhe"><img src="https://abranhe.com/badge.svg"></a>
 	<a href="https://cash.me/$abranhe"><img src="https://cdn.abraham.gq/badges/cash-me.svg"></a>
 	<a href="https://www.patreon.com/abranhe"><img src="https://cdn.abraham.gq/badges/patreon.svg" /></a>
@@ -17,7 +18,7 @@
 
 # See
 
-- [Overview](#Overview)
+- [Overview](#overview)
 - [Install](#install)
 - [Usage](#usage)
 - [API](#api)
@@ -223,6 +224,8 @@ pkg.author('Your Name <you@example.com> (http://your-website.com)');
 }
 ```
 
+and:
+
 ```js
 const pkg = require('init-pkg-json');
 
@@ -243,26 +246,67 @@ pkg.author('Your Name', 'you@example.com', 'http://your-website.com');
 
 ### `contributors`
 
+Those that have contributed to your package. Contributors are an array of people.
+
+```js
+const pkg = require('init-pkg-json');
+
+pkg.contributors([{
+	name: 'Your Friend',
+	email: 'friend@example.com',
+	url: 'http://friends-website.com',
+},{
+	name: 'Other Friend',
+	email: 'other@example.com',
+	url: 'http://other-website.com',
+}]);
+```
+
+### Result in JSON
+
 ```json
 {
   "contributors": [
     { "name": "Your Friend", "email": "friend@example.com", "url": "http://friends-website.com" }
     { "name": "Other Friend", "email": "other@example.com", "url": "http://other-website.com" }
   ],
-  "contributors": [
-    "Your Friend <friend@example.com> (http://friends-website.com)",
-    "Other Friend <other@example.com> (http://other-website.com)"
-  ]
 }
 ```
 
-Those that have contributed to your package. Contributors are an array of people.
+or just:
 
+```js
+const pkg = require('init-pkg-json');
+
+pkg.contributors(['Your Friend <friend@example.com> (http://friends-website.com)',
+'Other Friend <other@example.com> (http://other-website.com)']);
+```
+
+### Result in JSON
+
+```json
+{
+	"contributors": [
+		"Your Friend <friend@example.com> (http://friends-website.com)",
+		"Other Friend <other@example.com> (http://other-website.com)"
+	]
+}
+```
 ## Files
 
 You can specify files that will be included in your project, along with the main entry point for your project.
 
 ### `files`
+
+These are files that are included in your project. You can specify single files, whole directories or use wildcards to include files that meet a certain criteria.
+
+```js
+const pkg = require('init-pkg-json');
+
+pkg.files(['filename.js', 'directory/', 'glob/*.{js.json}']);
+```
+
+### Result in JSON
 
 ```json
 {
@@ -274,9 +318,17 @@ You can specify files that will be included in your project, along with the main
 }
 ```
 
-These are files that are included in your project. You can specify single files, whole directories or use wildcards to include files that meet a certain criteria.
-
 ### `main`
+
+This is the primary entry point for the functionality for your project.
+
+```js
+const pkg = require('init-pkg-json');
+
+pkg.main('filename.js');
+```
+
+### Result in JSON
 
 ```json
 {
@@ -284,34 +336,83 @@ These are files that are included in your project. You can specify single files,
 }
 ```
 
-This is the primary entry point for the functionality for your project.
-
 ### `bin`
+
+Executable files included with your project that will be installed.
+
+```js
+const pkg = require('init-pkg-json');
+
+pkg.bin('bin.js');
+```
+
+### Result in JSON
 
 ```json
 {
-  "bin": "bin.js",
-  "bin": {
+  "bin": "bin.js"
+}
+```
+
+or:
+
+```js
+const pkg = require('init-pkg-json');
+
+pkg.bin({
+	'command-name': 'bin/command-name.js',
+	'other-command': 'bin/other-command'
+});
+```
+
+### Result in JSON
+
+```json
+{
+	"bin": {
     "command-name": "bin/command-name.js",
     "other-command": "bin/other-command"
   }
 }
 ```
 
-Executable files included with your project that will be installed.
-
 ### `man`
+
+If you have man pages associated with your project, add them here.
+
+```js
+const pkg = require('init-pkg-json');
+
+pkg.man([
+	'./man/doc.1', './man/doc.2'
+]);
+```
+
+### Result in JSON
 
 ```json
 {
-  "man": "./man/doc.1",
   "man": ["./man/doc.1", "./man/doc.2"]
 }
 ```
 
-If you have man pages associated with your project, add them here.
-
 ### `directories`
+
+When installing your package, you can specify exact locations to put binary files, man pages, documentation, examples, etc.
+
+```js
+const pkg = require('init-pkg-json');
+
+pkg.directories({
+	'lib': 'path/to/lib/',
+	'bin': 'path/to/bin/',
+	'man': 'path/to/man/',
+	'doc': 'path/to/doc/',
+	'example': 'path/to/example/'
+});
+```
+
+### Result in JSON
 
 ```json
 {
@@ -325,13 +426,21 @@ If you have man pages associated with your project, add them here.
 }
 ```
 
-When installing your package, you can specify exact locations to put binary files, man pages, documentation, examples, etc.
-
 ## Tasks
 
 Your package can include runnable scripts or other configuration.
 
 ### `scripts`
+
+```js
+const pkg = require('init-pkg-json');
+
+pkg.scripts({
+	'build-project': 'node build-project.js'
+});
+```
+
+### Result in JSON
 
 ```json
 {
@@ -345,6 +454,18 @@ Read more at: [npm docs](https://docs.npmjs.com/misc/scripts).
 
 ### `config`
 
+Configuration options or parameters used in your scripts.
+
+```js
+const pkg = require('init-pkg-json');
+
+pkg.config({
+	'port': '8080'
+});
+```
+
+### Result in JSON
+
 ```json
 {
   "config": {
@@ -352,8 +473,6 @@ Read more at: [npm docs](https://docs.npmjs.com/misc/scripts).
   }
 }
 ```
-
-Configuration options or parameters used in your scripts.
 
 ## Dependencies
 
